@@ -22,16 +22,26 @@ export class SmartLight {
   }
   async setBrightness(brightness: number): Promise<boolean> {
     //TODO::
+    if (brightness < 0) {
+      brightness = 0;
+    } else if (brightness > 100) {
+      brightness = 100;
+    }
+    this.state.brightness = brightness;
     return;
   }
 
   async setColor(color: string): Promise<boolean> {
     //TODO::
+    if (/^#[0-9A-F]{6}$/i.test(color)) {
+      this.state.color = color;
+    }
     return;
   }
 
   async setPowerState(state: PowerState): Promise<boolean> {
     //TODO::
+    this.state.powerState = state;
     return;
   }
 }

@@ -1,0 +1,14 @@
+<div class="info-card">
+  <div class="icon">
+    <img
+      src="assets/icons/smart-{{ device.deviceMeta.type | lowercase }}.png"
+      alt=""
+    />
+  </div>
+  <div class="info">
+    <h4 class="title">{{ device.name }}</h4>
+    <div class="type">
+      {{ device.deviceMeta.ip }} : {{ device.deviceMeta.servicePort }}
+    </div>
+  </div>
+</div>

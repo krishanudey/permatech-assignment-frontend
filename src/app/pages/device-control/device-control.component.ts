@@ -40,10 +40,6 @@ export class DeviceControlComponent implements OnInit {
         this.subscription.add(
           this.api.getMyDevice(uuid).subscribe((device) => {
             this.myDevice = device;
-            console.log(
-              "DeviceControlComponent -> fetchDevice -> device",
-              device
-            );
             this.loading = false;
           })
         );

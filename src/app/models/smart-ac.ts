@@ -10,7 +10,7 @@ export interface SmartAcState {
 }
 export class SmartAC {
   private state: SmartAcState = null;
-  constructor(networkDevice: NetworkDevice) {
+  constructor(public networkDevice: NetworkDevice) {
     this.state = {
       temp: 28,
       mode: AcMode.AUTO,

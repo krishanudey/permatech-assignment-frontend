@@ -1,0 +1,38 @@
+@import "~src/variables.scss";
+:host {
+  display: block;
+  margin: 0 auto;
+}
+app-device-info-card {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.controls {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  padding-top: 2em;
+  margin-top: -2em;
+  background: #ffffff;
+  border-radius: 0.5em;
+  .control {
+    padding: 1em 0;
+    border-bottom: solid 1px $color-secondary;
+    .property {
+      text-align: center;
+      font-size: 0.75em;
+      font-weight: bold;
+    }
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  :host {
+    width: calc(50%);
+  }
+}

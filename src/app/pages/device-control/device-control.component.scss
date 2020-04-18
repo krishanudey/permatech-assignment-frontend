@@ -1,0 +1,22 @@
+@import "~src/variables";
+:host {
+  & > .page-width {
+    padding: 1em;
+  }
+}
+
+.unknown-device {
+  display: flex;
+  flex-direction: column;
+  height: 20em;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  i {
+    font-size: 4em;
+    color: #717171;
+  }
+  p {
+    line-height: 1.5em;
+  }
+}

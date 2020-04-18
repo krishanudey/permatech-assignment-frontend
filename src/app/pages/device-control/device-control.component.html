@@ -7,9 +7,28 @@
 <div class="page-width">
   <app-loading-panel *ngIf="loading"></app-loading-panel>
   <ng-container [ngSwitch]="myDevice.deviceMeta.type" *ngIf="!loading">
-    <app-ac-controller *ngSwitchCase="'AC'"></app-ac-controller>
-    <app-tv-controller *ngSwitchCase="'TV'"></app-tv-controller>
-    <app-light-controller *ngSwitchCase="'Light'"></app-light-controller>
-    <div class="unknown-device" *ngSwitchDefault></div>
+    <app-ac-controller
+      *ngSwitchCase="'AC'"
+      [device]="myDevice"
+    ></app-ac-controller>
+    <app-tv-controller
+      *ngSwitchCase="'TV'"
+      [device]="myDevice"
+    ></app-tv-controller>
+    <app-light-controller
+      *ngSwitchCase="'Light'"
+      [device]="myDevice"
+    ></app-light-controller>
+    <div class="unknown-device" *ngSwitchDefault>
+      <i class="fa fa-exclamation-triangle"></i>
+      <h3>Oops!!!</h3>
+      <p>
+        We don't support controlling this device.
+        <br />
+        Name : {{ myDevice.name }}
+        <br />
+        Type : {{ myDevice.deviceMeta.type }}
+      </p>
+    </div>
   </ng-container>
 </div>

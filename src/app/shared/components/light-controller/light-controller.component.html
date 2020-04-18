@@ -1,3 +1,40 @@
-<p>
-  light-controller works!
-</p>
+<app-device-info-card [device]="device"></app-device-info-card>
+<div class="controls">
+  <div class="control">
+    <div class="property">Power</div>
+    <div class="property-controls">
+      <button class="btn power" (click)="togglePower()">
+        <i class="fa fa-power-off"></i> Power
+        {{ smartDevice.getState().powerState === "ON" ? "On" : "Off" }}
+      </button>
+    </div>
+  </div>
+  <div class="control">
+    <div class="property">Brightness</div>
+    <div class="property-controls">
+      <button class="btn" (click)="changeBrightness(-5)">
+        <i class="fa fa-minus"></i>
+      </button>
+      <span class="value">{{ smartDevice.getState().brightness }}</span>
+      <button class="btn" (click)="changeBrightness(5)">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="control">
+    <div class="property">Color</div>
+    <div class="property-controls">
+      <div class="color-circles">
+        <div
+          (click)="changeColor(paint)"
+          *ngFor="let paint of defaultColors"
+          class="color-circle"
+          [ngClass]="{
+            active: smartDevice.getState().color.toLowerCase() === paint
+          }"
+          [ngStyle]="{ background: paint }"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

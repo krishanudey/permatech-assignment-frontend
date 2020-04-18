@@ -1,15 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { SmartLight } from "src/app/models/smart-light";
+import { DeviceConfig } from "src/app/models/device-config";
+import { PowerState } from "src/app/models/enums";
 
 @Component({
-  selector: 'app-light-controller',
-  templateUrl: './light-controller.component.html',
-  styleUrls: ['./light-controller.component.scss']
+  selector: "app-light-controller",
+  templateUrl: "./light-controller.component.html",
+  styleUrls: ["./light-controller.component.scss"],
 })
 export class LightControllerComponent implements OnInit {
+  private deviceConfig: DeviceConfig;
+  private smartDevice: SmartLight = null;
+  defaultColors: string[] = [
+    "#ffffff",
+    "#ff4136",
+    "#2ecc40",
+    "#0074d9",
+    "#ffdc00",
+    "#ff851b",
+    "#b10dc9",
+  ];
 
-  constructor() { }
-
-  ngOnInit() {
+  @Input() set device(value: DeviceConfig) {
+    this.deviceConfig = value;
+    this.smartDevice = new SmartLight(value.deviceMeta);
+    window["ac"] = this.smartDevice;
   }
 
+  get device(): DeviceConfig {
+    return this.deviceConfig;
+  }
+  constructor() {}
+
+  ngOnInit() {}
+  togglePower() {
+    this.smartDevice.setPowerState(
+      this.smartDevice.getState().powerState === PowerState.ON
+        ? PowerState.OFF
+        : PowerState.ON
+    );
+  }
+  changeBrightness(delta: number) {
+    this.smartDevice.setBrightness(
+      this.smartDevice.getState().brightness + delta
+    );
+  }
+  changeColor(color: string) {
+    this.smartDevice.setColor(color);
+  }
 }
