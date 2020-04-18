@@ -1,8 +1,9 @@
 <app-header
-  [buttons]="headerButtons"
+  [buttons]="getHeaderButtons()"
   (buttonClick)="onHeaderButtonClicked($event)"
 ></app-header>
 <div class="page-width">
+  <app-loading-panel *ngIf="loading"></app-loading-panel>
   <div class="device-list">
     <div class="device-card" *ngFor="let device of myDevices">
       <div class="icon">

@@ -7,9 +7,10 @@ import { AppComponent } from "./app.component";
 import { DeviceDiscoveryComponent } from "./pages/device-discovery/device-discovery.component";
 import { MyDevicesComponent } from "./pages/my-devices/my-devices.component";
 import { HeaderComponent } from './shared/components/header/header.component';
+import { LoadingPanelComponent } from './shared/components/loading-panel/loading-panel.component';
 
 @NgModule({
-  declarations: [AppComponent, DeviceDiscoveryComponent, MyDevicesComponent, HeaderComponent],
+  declarations: [AppComponent, DeviceDiscoveryComponent, MyDevicesComponent, HeaderComponent, LoadingPanelComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
