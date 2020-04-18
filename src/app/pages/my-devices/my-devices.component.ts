@@ -3,6 +3,7 @@ import { ApiService } from "src/app/services/api.service";
 import { Subscription } from "rxjs";
 import { DeviceConfig } from "src/app/models/device-config";
 import { HeaderButton } from "src/app/shared/components/header/header.component";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-my-devices",
@@ -22,7 +23,7 @@ export class MyDevicesComponent implements OnInit, OnDestroy {
   ];
   myDevices: DeviceConfig[] = [];
   private myDeviceSubscription: Subscription;
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit() {
     this.myDeviceSubscription = this.api.getMyDevices().subscribe((devices) => {
@@ -34,6 +35,14 @@ export class MyDevicesComponent implements OnInit, OnDestroy {
   }
 
   onHeaderButtonClicked(btn: HeaderButton) {
-    console.log("MyDevicesComponent -> onHeaderButtonClicked -> btn", btn);
+    switch (btn.name) {
+      case "add":
+        this.router.navigate(["discover"]);
+        break;
+      case "search":
+        break;
+      default:
+        console.log("No handler for header button click. Button: ", btn);
+    }
   }
 }

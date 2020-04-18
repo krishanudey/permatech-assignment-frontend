@@ -5,4 +5,5 @@ export interface NetworkDevice {
   ip: string;
   servicePort: number;
   uuid: string;
+  isAdded: boolean;
 }
