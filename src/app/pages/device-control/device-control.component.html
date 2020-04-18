@@ -1,0 +1,15 @@
+<app-header
+  [showBackButton]="true"
+  (backButtonClick)="onBackButtonClick()"
+  [buttons]="getHeaderButtons()"
+  (buttonClick)="onHeaderButtonClicked($event)"
+></app-header>
+<div class="page-width">
+  <app-loading-panel *ngIf="loading"></app-loading-panel>
+  <ng-container [ngSwitch]="myDevice.deviceMeta.type" *ngIf="!loading">
+    <app-ac-controller *ngSwitchCase="'AC'"></app-ac-controller>
+    <app-tv-controller *ngSwitchCase="'TV'"></app-tv-controller>
+    <app-light-controller *ngSwitchCase="'Light'"></app-light-controller>
+    <div class="unknown-device" *ngSwitchDefault></div>
+  </ng-container>
+</div>

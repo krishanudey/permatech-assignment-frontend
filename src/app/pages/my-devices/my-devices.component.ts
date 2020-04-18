@@ -71,4 +71,7 @@ export class MyDevicesComponent implements OnInit, OnDestroy {
         console.log("No handler for header button click. Button: ", btn);
     }
   }
+  onDeviceClicked(device: DeviceConfig) {
+    this.router.navigate(["device", device.deviceMeta.uuid]);
+  }
 }

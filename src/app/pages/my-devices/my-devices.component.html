@@ -5,7 +5,11 @@
 <div class="page-width">
   <app-loading-panel *ngIf="loading"></app-loading-panel>
   <div class="device-list">
-    <div class="device-card" *ngFor="let device of myDevices">
+    <div
+      class="device-card"
+      *ngFor="let device of myDevices"
+      (click)="onDeviceClicked(device)"
+    >
       <div class="icon">
         <img
           src="assets/icons/smart-{{ device.deviceMeta.type | lowercase }}.png"

@@ -32,6 +32,10 @@ export class ApiService {
       type: nd.type,
     });
   }
+  getMyDevice(uuid: string): Observable<DeviceConfig> {
+    let apiURL = `${this.apiRoot}/devices/${uuid}`;
+    return this.http.get<DeviceConfig>(apiURL);
+  }
 }
 
 export const HTTP_API_ERROR_CODE = {
