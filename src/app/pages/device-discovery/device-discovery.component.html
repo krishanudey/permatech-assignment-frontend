@@ -1,3 +1,33 @@
-<p>
-  device-discovery works!
-</p>
+<app-header
+  [showBackButton]="true"
+  (backButtonClick)="onBackButtonClick()"
+  [buttons]="discovering ? [] : headerButtons"
+  (buttonClick)="onHeaderButtonClicked($event)"
+></app-header>
+<div class="page-width">
+  <app-loading-panel *ngIf="discovering"></app-loading-panel>
+  <div class="device-list">
+    <div class="device-card" *ngFor="let device of getDevices()">
+      <div class="icon">
+        <img
+          src="assets/icons/smart-{{ device.type | lowercase }}.png"
+          alt=""
+        />
+      </div>
+      <div class="info">
+        <h4 class="title">{{ device.ip }} : {{ device.servicePort }}</h4>
+        <div class="type">{{ device.type }}</div>
+      </div>
+      <div
+        class="action"
+        *ngIf="!device.isAdded"
+        (click)="onAddButtonClick(device)"
+      >
+        <i class="fa fa-plus"></i> Add
+      </div>
+      <div class="action added" *ngIf="device.isAdded">
+        <i class="fa fa-check"></i> Added
+      </div>
+    </div>
+  </div>
+</div>
