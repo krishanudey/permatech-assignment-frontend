@@ -1,0 +1,12 @@
+<header>
+  <div class="page-width">
+    <div class="title">My Smart Home</div>
+    <div
+      class="button"
+      *ngFor="let btn of buttons"
+      (click)="onButtonClick(btn)"
+    >
+      <i class="fa" [ngClass]="btn.icon"></i>
+    </div>
+  </div>
+</header>
