@@ -18,9 +18,18 @@ header {
     .discover {
       padding: 1.25em;
       cursor: pointer;
-      &:hover {
+      transition: all 0.1s linear;
+      &:active {
         background: $color-primary-light;
       }
+    }
+  }
+}
+
+@media (pointer: fine) {
+  .discover {
+    &:hover {
+      background: $color-primary-light;
     }
   }
 }

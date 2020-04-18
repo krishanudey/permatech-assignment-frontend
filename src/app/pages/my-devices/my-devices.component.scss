@@ -13,8 +13,40 @@
   padding: 0.75em;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
   margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  transition: all 0.1s linear;
+  .icon {
+    margin-right: 0.75em;
+    img {
+      width: 3em;
+      height: 3em;
+      object-fit: contain;
+    }
+  }
+  .info {
+    flex: 1;
+    .title {
+      margin: 0;
+    }
+    .type {
+      margin-top: 0.25em;
+      font-size: 0.76em;
+      opacity: 0.5;
+    }
+  }
+  &:active {
+    // box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);;
+    transform: scale(1.05);
+  }
 }
-
+@media (pointer: fine) {
+  .device-card {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
 @media (min-width: 640px) and (max-width: 991px) {
   .device-card {
     width: calc(50% - 0.5em);

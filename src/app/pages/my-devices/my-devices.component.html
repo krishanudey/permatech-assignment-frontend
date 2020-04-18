@@ -1,45 +1,16 @@
 <div class="page-width">
   <div class="device-list">
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
-    <div class="device-card">test</div>
+    <div class="device-card" *ngFor="let device of myDevices">
+      <div class="icon">
+        <img
+          src="assets/icons/smart-{{ device.deviceMeta.type | lowercase }}.png"
+          alt=""
+        />
+      </div>
+      <div class="info">
+        <h4 class="title">{{ device.name }}</h4>
+        <div class="type">{{ device.deviceMeta.type }}</div>
+      </div>
+    </div>
   </div>
 </div>
