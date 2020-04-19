@@ -27,29 +27,12 @@ export class SmartTV {
     return this.state;
   }
 
-  async setVolume(vol: number): Promise<boolean> {
-    //TODO::
-    return;
-  }
-
-  async toggleMute(): Promise<boolean> {
-    //TODO::
-    return;
-  }
-
-  async setPowerState(state: PowerState): Promise<boolean> {
-    //TODO::
-    return;
-  }
-
   async keyPress(key: TvKeys): Promise<boolean> {
-    //TODO::
     let success = await this.api.deviceAction(
       this.networkDevice.uuid,
       "keyPress",
       key
     );
-    console.log("SmartTV -> key, success", key, success);
 
     return;
   }
