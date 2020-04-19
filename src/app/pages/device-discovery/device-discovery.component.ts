@@ -102,10 +102,6 @@ export class DeviceDiscoveryComponent implements OnInit, OnDestroy {
             });
           },
           async (err: HttpErrorResponse) => {
-            console.log(
-              "DeviceDiscoveryComponent -> onAddButtonClick -> err",
-              err
-            );
             if (
               err.error.reason === HTTP_API_ERROR_CODE.DUPLICATE_DEVICE_NAME
             ) {
