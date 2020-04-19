@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { SmartAC } from "src/app/models/smart-ac";
 import { DeviceConfig } from "src/app/models/device-config";
 import { PowerState, AcMode, AcFanSpeed, AcSwing } from "src/app/models/enums";
+import { ApiService } from "src/app/services/api.service";
 
 @Component({
   selector: "app-ac-controller",
@@ -14,8 +15,7 @@ export class AcControllerComponent implements OnInit {
 
   @Input() set device(value: DeviceConfig) {
     this.deviceConfig = value;
-    this.smartDevice = new SmartAC(value.deviceMeta);
-    window["c"] = this;
+    this.smartDevice = new SmartAC(value.deviceMeta, this.api);
   }
 
   get device(): DeviceConfig {
@@ -26,7 +26,7 @@ export class AcControllerComponent implements OnInit {
   defaultFanSpeeds: string[] = Object.keys(AcFanSpeed);
   defaultSwings: string[] = Object.keys(AcSwing);
 
-  constructor() {}
+  constructor(private api: ApiService) {}
 
   ngOnInit() {}
   togglePower() {

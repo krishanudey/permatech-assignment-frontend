@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { SmartLight } from "src/app/models/smart-light";
 import { DeviceConfig } from "src/app/models/device-config";
 import { PowerState } from "src/app/models/enums";
+import { ApiService } from "src/app/services/api.service";
 
 @Component({
   selector: "app-light-controller",
@@ -23,14 +24,13 @@ export class LightControllerComponent implements OnInit {
 
   @Input() set device(value: DeviceConfig) {
     this.deviceConfig = value;
-    this.smartDevice = new SmartLight(value.deviceMeta);
-    window["ac"] = this.smartDevice;
+    this.smartDevice = new SmartLight(value.deviceMeta, this.api);
   }
 
   get device(): DeviceConfig {
     return this.deviceConfig;
   }
-  constructor() {}
+  constructor(private api: ApiService) {}
 
   ngOnInit() {}
   togglePower() {

@@ -43,16 +43,14 @@ export class SmartTV {
   }
 
   async keyPress(key: TvKeys): Promise<boolean> {
-    console.log("SmartTV -> key", key);
     //TODO::
-    this.api.deviceAction(this.networkDevice.uuid, "keyPress", key).subscribe(
-      (resp) => {
-        console.log("SmartTV -> resp", resp);
-      },
-      (err) => {
-        console.log("SmartTV -> err", err);
-      }
+    let success = await this.api.deviceAction(
+      this.networkDevice.uuid,
+      "keyPress",
+      key
     );
+    console.log("SmartTV -> key, success", key, success);
+
     return;
   }
 }

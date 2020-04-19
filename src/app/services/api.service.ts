@@ -53,10 +53,21 @@ export class ApiService {
   }
   deviceAction(uuid: string, action: string, args?: any) {
     //POST localhost:8080/api/v1/actions/perform/3a96dede-481e-4a54-992d-6f6580185902
-    let apiURL = `${this.apiRoot}/actions/perform/${uuid}`;
-    return this.http.post<boolean>(apiURL, {
-      action,
-      args,
+    return new Promise<boolean>((resolve) => {
+      let apiURL = `${this.apiRoot}/actions/perform/${uuid}`;
+      this.http
+        .post<boolean>(apiURL, {
+          action,
+          args,
+        })
+        .subscribe(
+          (res) => {
+            resolve(true);
+          },
+          (err) => {
+            resolve(true);
+          }
+        );
     });
   }
 }
