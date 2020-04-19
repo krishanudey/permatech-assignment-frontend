@@ -2,17 +2,74 @@
 <div class="controls">
   <div class="control">
     <div class="property">Power</div>
+    <div class="property-controls">
+      <button class="btn power" (click)="togglePower()">
+        <i class="fa fa-power-off"></i> Power
+        {{ smartDevice.getState().powerState === "ON" ? "On" : "Off" }}
+      </button>
+    </div>
   </div>
   <div class="control">
     <div class="property">Temperature</div>
+    <div class="property-controls">
+      <button class="btn" (click)="changeTemperature(-1)">
+        <i class="fa fa-minus"></i>
+      </button>
+      <span class="value">{{ smartDevice.getState().temp }}</span>
+      <button class="btn" (click)="changeTemperature(1)">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
   </div>
   <div class="control">
     <div class="property">Mode</div>
+    <div class="property-controls">
+      <div class="mode-circles">
+        <div
+          (click)="changeMode(mode)"
+          *ngFor="let mode of defaultModes"
+          class="mode-button"
+          [ngClass]="{
+            active: smartDevice.getState().mode === mode
+          }"
+        >
+          {{ getModeDisplayText(mode) }}
+        </div>
+      </div>
+    </div>
   </div>
   <div class="control">
     <div class="property">Fan Speed</div>
+    <div class="property-controls">
+      <div class="mode-circles">
+        <div
+          (click)="changeFanSpeed(fs)"
+          *ngFor="let fs of defaultFanSpeeds"
+          class="mode-button"
+          [ngClass]="{
+            active: smartDevice.getState().fanSpeed === fs
+          }"
+        >
+          {{ getFanSpeedDisplayText(fs) }}
+        </div>
+      </div>
+    </div>
   </div>
   <div class="control">
     <div class="property">Swing</div>
+    <div class="property-controls">
+      <div class="mode-circles">
+        <div
+          (click)="changeSwing(sw)"
+          *ngFor="let sw of defaultSwings"
+          class="mode-button"
+          [ngClass]="{
+            active: smartDevice.getState().swing === sw
+          }"
+        >
+          {{ getSwingDisplayText(sw) }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>

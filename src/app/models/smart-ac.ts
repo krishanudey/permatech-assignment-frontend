@@ -26,26 +26,36 @@ export class SmartAC {
 
   async setTemperature(temp: number): Promise<boolean> {
     //TODO::
+    if (temp < 18) {
+      temp = 18;
+    } else if (temp > 32) {
+      temp = 32;
+    }
+    this.state.temp = temp;
     return;
   }
 
   async setMode(mode: AcMode): Promise<boolean> {
     //TODO::
+    this.state.mode = mode;
     return;
   }
 
   async setFanSpeed(speed: AcFanSpeed): Promise<boolean> {
     //TODO::
+    this.state.fanSpeed = speed;
     return;
   }
 
   async setSwing(swing: AcSwing): Promise<boolean> {
     //TODO::
+    this.state.swing = swing;
     return;
   }
 
   async setPowerState(state: PowerState): Promise<boolean> {
     //TODO::
+    this.state.powerState = state;
     return;
   }
 }
