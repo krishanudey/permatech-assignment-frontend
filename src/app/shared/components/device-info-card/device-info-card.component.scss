@@ -31,13 +31,35 @@
     flex: 1;
     margin-top: 1em;
     text-align: center;
+    position: relative;
     .title {
       margin: 0;
     }
     .type {
       margin-top: 1em;
-      font-size: 0.76em;
+      font-size: 0.75em;
       opacity: 0.5;
+    }
+    .edit-btn {
+      position: absolute;
+      display: inline-block;
+      cursor: pointer;
+      padding: 1em;
+      font-size: 0.75em;
+      top: -7em;
+      right: -0.5em;
+      color: lighten($color: $color-primary, $amount: 50);
+      &:active {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+@media (pointer: fine) {
+  .edit-btn {
+    &:hover {
+      transform: scale(1.05);
     }
   }
 }

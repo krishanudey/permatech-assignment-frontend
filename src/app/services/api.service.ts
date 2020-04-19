@@ -40,6 +40,12 @@ export class ApiService {
     let apiURL = `${this.apiRoot}/devices/${uuid}`;
     return this.http.delete<DeviceConfig>(apiURL);
   }
+  updateDevice(uuid: string, name: string) {
+    let apiURL = `${this.apiRoot}/devices/${uuid}`;
+    return this.http.put<DeviceConfig>(apiURL, {
+      name,
+    });
+  }
 }
 
 export const HTTP_API_ERROR_CODE = {

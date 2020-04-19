@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
     this.backButtonClick.emit();
   }
   onButtonClick(btn: HeaderButton) {
-    this.buttonClick.emit(btn);
+    setTimeout(() => {
+      this.buttonClick.emit(btn);
+    }, 200);
   }
 }
 

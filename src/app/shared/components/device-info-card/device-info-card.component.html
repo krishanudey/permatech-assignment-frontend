@@ -6,9 +6,12 @@
     />
   </div>
   <div class="info">
-    <h4 class="title">{{ device.name }}</h4>
+    <h4 class="title">
+      {{ device.name }}
+    </h4>
     <div class="type">
       {{ device.deviceMeta.ip }} : {{ device.deviceMeta.servicePort }}
     </div>
+    <div class="edit-btn" (click)="edit()"><i class="fa fa-edit"></i></div>
   </div>
 </div>
