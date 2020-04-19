@@ -40,10 +40,20 @@ export class DeviceDiscoveryComponent implements OnInit, OnDestroy {
   discover() {
     this.discovering = true;
     this.discoverDeviceSubscription.add(
-      this.api.discoverDevices().subscribe((devices) => {
-        this.devices = devices;
-        this.discovering = false;
-      })
+      this.api.discoverDevices().subscribe(
+        (devices) => {
+          this.devices = devices;
+          this.discovering = false;
+        },
+        async (err) => {
+          this.discovering = false;
+          await swal({
+            title: null,
+            text: `Oops! Something went wrong while talking to server. Please try after some time.`,
+            type: "error",
+          });
+        }
+      )
     );
   }
   onBackButtonClick() {

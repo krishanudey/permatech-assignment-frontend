@@ -4,6 +4,7 @@ import { Subscription, timer } from "rxjs";
 import { DeviceConfig } from "src/app/models/device-config";
 import { HeaderButton } from "src/app/shared/components/header/header.component";
 import { Router } from "@angular/router";
+import swal from "sweetalert2";
 
 @Component({
   selector: "app-my-devices",
@@ -48,10 +49,20 @@ export class MyDevicesComponent implements OnInit, OnDestroy {
     this.myDeviceSubscription.add(
       timer(1000).subscribe((x) => {
         this.myDeviceSubscription.add(
-          this.api.getMyDevices().subscribe((devices) => {
-            this.myDevices = devices;
-            this.loading = false;
-          })
+          this.api.getMyDevices().subscribe(
+            (devices) => {
+              this.myDevices = devices;
+              this.loading = false;
+            },
+            async (err) => {
+              this.loading = false;
+              await swal({
+                title: null,
+                text: `Oops! Something went wrong while talking to server. Please try after some time.`,
+                type: "error",
+              });
+            }
+          )
         );
       })
     );
