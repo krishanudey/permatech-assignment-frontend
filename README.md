@@ -18,9 +18,9 @@ Build a frontend UI for home or office automation system to remotely control dev
 
 **Supported Browser:**
 
-- Chrome (Mac, Linux, Windows, iOS, Android)
-- Safari (Mac & iOS)
-- Firefox (Mac, Linux, Windows, Android)
+- **Chrome** (Mac, Linux, Windows, iOS, Android)
+- **Safari** (Mac & iOS)
+- **Firefox** (Mac, Linux, Windows, Android)
 
 **Dev Server Port:** 4200
 
