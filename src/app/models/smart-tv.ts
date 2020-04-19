@@ -1,5 +1,6 @@
 import { PowerState, TvKeys } from "./enums";
 import { NetworkDevice } from "./network-device";
+import { ApiService } from "../services/api.service";
 
 export interface SmartTvState {
   powerState: PowerState;
@@ -9,12 +10,17 @@ export interface SmartTvState {
 
 export class SmartTV {
   private state: SmartTvState = null;
-  constructor(networkDevice: NetworkDevice) {
+  constructor(private networkDevice: NetworkDevice, private api: ApiService) {
     this.state = {
       powerState: PowerState.OFF,
-      volume: 35,
+      volume: 0,
       isMuted: false,
     };
+    api.getDeviceState(networkDevice.uuid).subscribe((state) => {
+      this.state.powerState = state.powerState;
+      this.state.volume = state.volume;
+      this.state.isMuted = state.isMuted;
+    });
   }
 
   getState() {
@@ -39,6 +45,14 @@ export class SmartTV {
   async keyPress(key: TvKeys): Promise<boolean> {
     console.log("SmartTV -> key", key);
     //TODO::
+    this.api.deviceAction(this.networkDevice.uuid, "keyPress", key).subscribe(
+      (resp) => {
+        console.log("SmartTV -> resp", resp);
+      },
+      (err) => {
+        console.log("SmartTV -> err", err);
+      }
+    );
     return;
   }
 }
