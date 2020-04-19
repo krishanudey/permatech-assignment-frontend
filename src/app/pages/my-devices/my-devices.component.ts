@@ -60,7 +60,7 @@ export class MyDevicesComponent implements OnInit, OnDestroy {
   onHeaderButtonClicked(btn: HeaderButton) {
     switch (btn.name) {
       case "add":
-        this.router.navigate(["discover"]);
+        this.discoverDevice();
         break;
       case "refresh":
         this.fetchDevices();
@@ -72,6 +72,13 @@ export class MyDevicesComponent implements OnInit, OnDestroy {
     }
   }
   onDeviceClicked(device: DeviceConfig) {
-    this.router.navigate(["device", device.deviceMeta.uuid]);
+    setTimeout(() => {
+      this.router.navigate(["device", device.deviceMeta.uuid]);
+    }, 200);
+  }
+  discoverDevice() {
+    setTimeout(() => {
+      this.router.navigate(["discover"]);
+    }, 200);
   }
 }

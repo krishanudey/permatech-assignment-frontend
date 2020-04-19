@@ -18,7 +18,7 @@ export class LightControllerComponent implements OnInit {
     "#0074d9",
     "#ffdc00",
     "#ff851b",
-    "#b10dc9",
+    // "#b10dc9",
   ];
 
   @Input() set device(value: DeviceConfig) {

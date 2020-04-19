@@ -21,5 +21,15 @@
         <div class="type">{{ device.deviceMeta.type }}</div>
       </div>
     </div>
+    <div
+      class="no-device"
+      *ngIf="(!myDevices || myDevices.length === 0) && !loading"
+    >
+      <div class="icon">
+        <img src="assets/icons/empty.png" alt="" />
+      </div>
+      <span>Looks like you don't have any device added!</span>
+      <div class="add" (click)="discoverDevice()">Add your first device</div>
+    </div>
   </div>
 </div>
