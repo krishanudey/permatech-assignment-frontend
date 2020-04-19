@@ -1,18 +1,65 @@
 <app-device-info-card [device]="device"></app-device-info-card>
 <div class="controls">
   <div class="control">
-    <div class="property">Power</div>
-  </div>
-  <div class="control">
-    <div class="property">Temperature</div>
-  </div>
-  <div class="control">
-    <div class="property">Mode</div>
-  </div>
-  <div class="control">
-    <div class="property">Fan Speed</div>
-  </div>
-  <div class="control">
-    <div class="property">Swing</div>
+    <div class="row">
+      <div class="button" (click)="keyPress('TvPower')">
+        <i class="fa fa-power-off"></i>
+      </div>
+      <div class="button" (click)="keyPress('Home')">
+        <i class="fa fa-home"></i>
+      </div>
+      <div class="button" (click)="keyPress('Return')">
+        <i class="fa fa-reply"></i>
+      </div>
+      <div class="button" (click)="keyPress('Mute')">
+        <i class="fa fa-volume-mute"></i>
+      </div>
+    </div>
+    <div class="row space-between gap-top">
+      <div class="button" (click)="keyPress('ChannelUp')">C +</div>
+      <div class="button" (click)="keyPress('Up')">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+      <div class="button" (click)="keyPress('VolumeUp')">
+        <i class="fa fa-volume-off"></i>&nbsp;+
+      </div>
+    </div>
+    <div class="row center">
+      <div class="button" (click)="keyPress('Left')">
+        <i class="fa fa-chevron-left"></i>
+      </div>
+      <div class="button" (click)="keyPress('Confirm')">
+        <i class="fa fa-hand-pointer"></i>
+      </div>
+      <div class="button" (click)="keyPress('Right')">
+        <i class="fa fa-chevron-right"></i>
+      </div>
+    </div>
+    <div class="row space-between">
+      <div class="button" (click)="keyPress('ChannelDown')">C -</div>
+      <div class="button" (click)="keyPress('Down')">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+      <div class="button" (click)="keyPress('VolumeDown')">
+        <i class="fa fa-volume-off"></i>&nbsp;-
+      </div>
+    </div>
+    <div class="row space-evenly gap-top">
+      <div class="button" (click)="keyPress('Rewind')">
+        <i class="fa fa-backward"></i>
+      </div>
+      <div class="button" (click)="keyPress('Pause')">
+        <img src="assets/icons/play-pause.webp" alt="" />
+      </div>
+      <div class="button" (click)="keyPress('Forward')">
+        <i class="fa fa-forward"></i>
+      </div>
+    </div>
+    <div class="row gap-top">
+      <div class="button red" (click)="keyPress('Red')"></div>
+      <div class="button green" (click)="keyPress('Green')"></div>
+      <div class="button yellow" (click)="keyPress('Yellow')"></div>
+      <div class="button blue" (click)="keyPress('Blue')"></div>
+    </div>
   </div>
 </div>

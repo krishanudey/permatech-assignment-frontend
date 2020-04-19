@@ -37,6 +37,7 @@ export class SmartTV {
   }
 
   async keyPress(key: TvKeys): Promise<boolean> {
+    console.log("SmartTV -> key", key);
     //TODO::
     return;
   }

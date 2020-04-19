@@ -19,10 +19,53 @@ app-device-info-card {
   .control {
     padding: 1em 0;
     border-bottom: solid 1px $color-secondary;
-    .property {
-      text-align: center;
-      font-size: 0.75em;
-      font-weight: bold;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      &.center {
+        justify-content: center;
+      }
+      &.space-evenly {
+        justify-content: space-evenly;
+      }
+      &.space-between {
+        justify-content: space-between;
+      }
+      &.gap-top {
+        margin-top: 1em;
+      }
+      .button {
+        border: solid 0.5px #a1a1a1;
+        margin: 0.5em;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.5em;
+        width: 2.5em;
+        cursor: pointer;
+        &:active {
+          transform: scale(1.1);
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          padding: 0.5em;
+        }
+        &.red {
+          background: $color-danger;
+        }
+        &.green {
+          background: $color-success;
+        }
+        &.yellow {
+          background: $color-warning;
+        }
+        &.blue {
+          background: $color-info;
+        }
+      }
     }
     &:last-child {
       border-bottom: none;

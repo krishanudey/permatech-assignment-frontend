@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { SmartTV } from "src/app/models/smart-tv";
 import { DeviceConfig } from "src/app/models/device-config";
+import { TvKeys } from "src/app/models/enums";
 
 @Component({
   selector: "app-tv-controller",
@@ -9,11 +10,11 @@ import { DeviceConfig } from "src/app/models/device-config";
 })
 export class TvControllerComponent implements OnInit {
   private deviceConfig: DeviceConfig;
-  private smartAC: SmartTV = null;
+  private smartDevice: SmartTV = null;
 
   @Input() set device(value: DeviceConfig) {
     this.deviceConfig = value;
-    this.smartAC = new SmartTV(value.deviceMeta);
+    this.smartDevice = new SmartTV(value.deviceMeta);
   }
 
   get device(): DeviceConfig {
@@ -22,4 +23,7 @@ export class TvControllerComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  keyPress(key: string) {
+    this.smartDevice.keyPress(TvKeys[key]);
+  }
 }
