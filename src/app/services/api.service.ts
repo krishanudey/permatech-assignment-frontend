@@ -36,6 +36,10 @@ export class ApiService {
     let apiURL = `${this.apiRoot}/devices/${uuid}`;
     return this.http.get<DeviceConfig>(apiURL);
   }
+  deleteMyDevice(uuid: string): Observable<DeviceConfig> {
+    let apiURL = `${this.apiRoot}/devices/${uuid}`;
+    return this.http.delete<DeviceConfig>(apiURL);
+  }
 }
 
 export const HTTP_API_ERROR_CODE = {
