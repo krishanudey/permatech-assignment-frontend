@@ -11,7 +11,7 @@ import { ApiService } from "src/app/services/api.service";
 })
 export class AcControllerComponent implements OnInit {
   private deviceConfig: DeviceConfig;
-  private smartDevice: SmartAC = null;
+  smartDevice: SmartAC = null;
 
   @Input() set device(value: DeviceConfig) {
     this.deviceConfig = value;

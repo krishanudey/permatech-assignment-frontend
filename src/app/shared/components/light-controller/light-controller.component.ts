@@ -11,7 +11,7 @@ import { ApiService } from "src/app/services/api.service";
 })
 export class LightControllerComponent implements OnInit {
   private deviceConfig: DeviceConfig;
-  private smartDevice: SmartLight = null;
+  smartDevice: SmartLight = null;
   defaultColors: string[] = [
     "#ffffff",
     "#ff4136",
